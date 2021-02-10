@@ -18,14 +18,12 @@ end
 def bubble_sort_by(array)
   for i in 0..(array.length - 2) do
     is_bigger = yield(array[i], array[i + 1]).positive?
-    if is_bigger
-      array[i + 1], array[i] = array[i], array[i + 1]
-    end
+    array[i + 1], array[i] = array[i], array[i + 1] if is_bigger
   end
   p array
 end
 
 bubble_sort([5, 1, 3, 2, 4, 9, 7, 6, 8, -11])
-bubble_sort_by(%w["hi", "hello", "hey"]) do |left, right|
+bubble_sort_by(%w[hi hello hey]) do |left, right|
   left.length - right.length
 end
